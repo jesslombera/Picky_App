@@ -18,6 +18,8 @@
     "method-override": "^2.3.2",
     "pg": "^4.3.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^2.0.5"
+    "request": "^2.55.0",
+    "sequelize": "^2.0.5",
+    "yelp": "^0.2.0"
   }
 }

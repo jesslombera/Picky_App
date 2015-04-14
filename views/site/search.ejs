@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Search</title>
+</head>
+<body>
+
+	<div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <form class="myForm" method="GET" action="/site/search">
+                    <input type="text" name="food" placeholder="Tacos">
+                    <input type="text" name="location" placeholder="San Francisco">
+                    <button>Click me</button>
+                </form>
+
+				
+
+            </div>
+        </div>
+        <div class="row">
+            <% if (noFood){ %>
+            <div class="col-xs-6 col-xs-offset-3"> No results </div>
+            <% } %>
+        </div>
+        <% results.forEach(function(result){ %>
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                    <a class="foodLink" href="/movie?id=<%= movie.imdbID %>">
+                        <%= result.name %>
+                    </a>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+
+
+
+
+	<!-- <h1>Search: </h1>
+	<ul>
+	<% results.forEach(function(result) { %>
+		<li>
+			<%= result.name %>
+	<%	})  %>
+	 -->
+</body>
+</html>
