@@ -107,14 +107,20 @@ app.delete('/logout', function(req, res){
 	res.redirect('/login');
 });
 
-app.get('/profile', function(req, res){
-	req.currentUser()
-	  .then(function (user) {
-	  	 res.render('users/profile', {user: user});
-	  });
-	
-});
 
+app.get('/profile', function(req, res){
+	req.currentUser().then(function(user){
+		if (user) {
+			db.Favorite.findAll({where: {UserId: user.id}})
+			  .then(function(restaurants){
+			  	console.log("\n\n\n\n\nHELLO", restaurants);
+				res.render('users/profile', {ejsUser: user, idk: restaurants});
+			});
+		} else {
+			res.redirect('users/login');
+		}
+	});
+});
 
 
 
@@ -125,14 +131,14 @@ app.get('/search', function(req, res) {
 	var food = req.query.food;
 	var city = req.query.city;
 	if (!food || !city) {
-		res.render('site/search', {results: []});
+		res.render('site/search', {results: [], food: false});
 		console.log("This is the food " + food);
 	} else {
 
 		yelp.search({term: food, location: city}, function(error, data) {
 	  		console.log("This is an error " + error);
 	  		console.log("This is our data " + data);
-	  	  res.render('site/search', {results: data.businesses});
+	  	  res.render('site/search', {results: data.businesses, food: food});
 	    });
 	} 
 	return(food);  
@@ -141,9 +147,22 @@ app.get('/search', function(req, res) {
 });
 
 app.post('/favorites', function(req,res){
-	var food = req.body.food;
-	console.log(food);
-	res.redirect('/profile');
+	var dish = req.body.dish;
+	var restaurant = req.body.restaurant;
+	
+	req.currentUser().then(function(dbUser){
+		if (dbUser) {
+			db.Favorite.create({dish: dish, restaurant: restaurant, UserId: req.session.userId})
+        .then(function(){
+            res.redirect("/profile");
+        })
+			dbUser.addToFavs(dish,restaurant).then(function(resTaus){
+				res.redirect('/profile');
+			});
+		} else {
+			res.redirect('/login');
+		}
+	});
 });
 
 // 	req.currentUser().then(function(User){

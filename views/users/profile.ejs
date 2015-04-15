@@ -6,10 +6,25 @@
 </head>
 <body>
 	<div class='container'>
-		<h2>Hi, <%= user.email  %></h2>
+		<h2>Hi, <%= ejsUser.email  %></h2>
 		  <form method='POST' action='/logout?_method=DELETE'>
 		     <button>Logout</button>
 		   </form>
-	</div>	     
+	</div>	   
+
+		<ul>
+			<% idk.forEach(function(fav){ %>
+				<li>
+					dish: <%= fav.dish %>
+					restaurant: <%= fav.restaurant  %>
+			
+
+				</li>
+			<% }) %>
+		</ul>
+
+
+
+		
 </body>
 </html>

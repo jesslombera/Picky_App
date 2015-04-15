@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-xs-6 col-xs-offset-3">
                 <form class="myForm" method="GET" action="/search">
-                    <input type="text" name="food" placeholder="dish: tacos" id="food">
+                    <input type="text" name="food" placeholder="dish: tacos">
                     <input type="text" name="city" placeholder="city: San Francisco">
 
                     <button>Search</button>
@@ -21,22 +21,27 @@
             </div>
         </div>
 
+<% if(food) { %>
 
-
+	<h2> <%= food  %></h2>
 	<h1>List of Restaurants </h1>
 
-	<ul>
-	<script type='text/javascript'>
-var food = document.getElementById('food').innerHTML;
-console.log("HI"+food);
+<% } %>
 
-</script>
+	<% results.forEach(function(result) { %>
+			
+			<div> <%= result.name %> </div>
+			<div> <%= result.location.address  %></div>
+			<div><p>Rating <%= result.rating  %></p></div>
+			<div> <%=  result.food %> </div>
+			
 
-	<% results.forEach(function(results) { %>
-			<%= results.name %>
 		  <form method="POST" action="/favorites">
 		  		<input type="text" style="display: none;"
-		  		   value="<%= results.name %>" restaurant="name">
+		  			value="<%= result.name %>"  name="restaurant">
+
+		  		<input type="text" style="display: none;"
+		  		   value="<%= food %>" name="dish">
 		  		 
 				
 		  		   <button>Add to Favorites</button>

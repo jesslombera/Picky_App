@@ -26,8 +26,7 @@ module.exports = function (sequelize, DataTypes){
     instanceMethods: {
       checkPassword: function(password) {
         return bcrypt.compareSync(password, this.passwordDigest);
-      }
-    },
+      },
 
       addToFavs: function(db,dish,restaurant) {
         return db.Favorite
@@ -35,11 +34,13 @@ module.exports = function (sequelize, DataTypes){
       }
     },
 
+  
 
     classMethods: {
-       associate: function(models) {
+    associate: function(models) {
         this.hasMany(models.Favorite);
       },
+      
       encryptPassword: function(password) {
         var hash = bcrypt.hashSync(password, salt);
         return hash;
@@ -72,7 +73,9 @@ module.exports = function (sequelize, DataTypes){
           }
 
         });
-      }
+      },
+    
+
 
     } // close classMethods
   }); // close define user
