@@ -9,41 +9,42 @@
 	<div class="container">
         <div class="row">
             <div class="col-xs-6 col-xs-offset-3">
-                <form class="myForm" method="GET" action="/site/search">
-                    <input type="text" name="food" placeholder="Tacos">
-                    <input type="text" name="location" placeholder="San Francisco">
-                    <button>Click me</button>
+                <form class="myForm" method="GET" action="/search">
+                    <input type="text" name="food" placeholder="dish: tacos" id="food">
+                    <input type="text" name="city" placeholder="city: San Francisco">
+
+                    <button>Search</button>
                 </form>
 
 				
 
             </div>
         </div>
-        <div class="row">
-            <% if (noFood){ %>
-            <div class="col-xs-6 col-xs-offset-3"> No results </div>
-            <% } %>
-        </div>
-        <% results.forEach(function(result){ %>
-            <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                    <a class="foodLink" href="/movie?id=<%= movie.imdbID %>">
-                        <%= result.name %>
-                    </a>
-                </div>
-            </div>
-            <% }) %>
-        </div>
 
 
 
+	<h1>List of Restaurants </h1>
 
-	<!-- <h1>Search: </h1>
 	<ul>
-	<% results.forEach(function(result) { %>
-		<li>
-			<%= result.name %>
+	<script type='text/javascript'>
+var food = document.getElementById('food').innerHTML;
+console.log("HI"+food);
+
+</script>
+
+	<% results.forEach(function(results) { %>
+			<%= results.name %>
+		  <form method="POST" action="/favorites">
+		  		<input type="text" style="display: none;"
+		  		   value="<%= results.name %>" restaurant="name">
+		  		 
+				
+		  		   <button>Add to Favorites</button>
+		  	</form>	   
+
+			
+			  
 	<%	})  %>
-	 -->
+
 </body>
 </html>

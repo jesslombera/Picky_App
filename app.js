@@ -63,10 +63,17 @@ app.get('/', function(req, res) {
 });
 
 // Here we add User routes together
-// First route is for the user to log inin
+// First route is for the user to log in
 app.get('/login', function(req, res){
-	res.render('users/login');
+	req.currentUser().then(function(user){
+		if (user) {
+			res.redirect('users/profile');
+		} else {
+			res.render("users/login");
+		}
+	});
 });
+
 
 // User to Sign up route
 app.get('/signup', function(req, res) {
@@ -95,68 +102,68 @@ app.post('/signup', function(req, res) {
 });
 
 // Here is a route to logout the user
-app.delete('/logout', function(req,res){
-	res.send('Logs out User!');
+app.delete('/logout', function(req, res){
+	req.logout();
+	res.redirect('/login');
 });
 
 app.get('/profile', function(req, res){
 	req.currentUser()
 	  .then(function (user) {
-	  	res.render('users/profile', {user: user});
+	  	 res.render('users/profile', {user: user});
 	  });
 	
 });
 
 
+
+
+
 //Routes for search page including API
 app.get('/search', function(req, res) {
-	var foodSearch = req.query.food;
-	if (!foodSearch) {
-		res.render('site/search', {results: [], noFood:true});
-	} else {
+	console.log(req.query);
 	var food = req.query.food;
-	var location = req.query.location;
-	var url = "http://api.yelp.com/v2/search?term=restaurant+" + food + "&location=" + location;
-	request(url, function(err, resp, body) {
-	  if (!err && res.statusCode === 200) {
-		var jsonData = JSON.parse(body);
-		console.log('\n\n\n\nThis is JSON DATA', jsonData);
-		if (!jsonData.Search) {
-			res.render('search', {movies: [], noMovies: true});
-		} else  {
-		res.render('search', {movies: jsonData.Search, noMovies: false});
-	    }
-	}
-	  });
-	}
+	var city = req.query.city;
+	if (!food || !city) {
+		res.render('site/search', {results: []});
+		console.log("This is the food " + food);
+	} else {
+
+		yelp.search({term: food, location: city}, function(error, data) {
+	  		console.log("This is an error " + error);
+	  		console.log("This is our data " + data);
+	  	  res.render('site/search', {results: data.businesses});
+	    });
+	} 
+	return(food);  
+ 	
+
 });
 
+app.post('/favorites', function(req,res){
+	var food = req.body.food;
+	console.log(food);
+	res.redirect('/profile');
+});
 
-
-
-
-
-
-// 	yelp.search({term: "food", location: "San Francisco"}, function(error, data) {
-//   	console.log(error);
-//   	console.log(data);
-//   	  res.render('site/search', {results: data.businesses});
-//     });
-
+// 	req.currentUser().then(function(User){
+// 		if (User) {
+// 			User.add(db,location).then(function(dish){
+// 				res.redirect('/profile');
+// 			});
+// 		} else {
+// 			res.redirect('/login');
+// 		}
+// 	});
 // });
 
 
 
 
+	// Start the server on port 3000
+  db.sequelize.sync().then(function(){
+  	var server = app.listen(3000, function() {
+  		console.log("I am listening");
+  	});
+  });
 
-app.get('/dish', function(req, res) {
-	res.send('List of Dishes')
-});
-
-
-
-
-// Start the server on port 3000
-app.listen(3000, function() {
-	console.log("I am listening");
-});

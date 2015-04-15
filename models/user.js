@@ -20,13 +20,26 @@ module.exports = function (sequelize, DataTypes){
     }
   },
 
+
+
   {
     instanceMethods: {
       checkPassword: function(password) {
         return bcrypt.compareSync(password, this.passwordDigest);
       }
     },
+
+      addToFavs: function(db,dish,restaurant) {
+        return db.Favorite
+          .create({dish: dish, restaurant: restaurant, UserId: this.id});
+      }
+    },
+
+
     classMethods: {
+       associate: function(models) {
+        this.hasMany(models.Favorite);
+      },
       encryptPassword: function(password) {
         var hash = bcrypt.hashSync(password, salt);
         return hash;

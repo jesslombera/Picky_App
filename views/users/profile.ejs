@@ -5,6 +5,11 @@
 	<title></title>
 </head>
 <body>
-	<%= user.email  %>
+	<div class='container'>
+		<h2>Hi, <%= user.email  %></h2>
+		  <form method='POST' action='/logout?_method=DELETE'>
+		     <button>Logout</button>
+		   </form>
+	</div>	     
 </body>
 </html>
