@@ -1,0 +1,29 @@
+body {
+	font-family: 'Raleway', sans-serif;
+	background: url('/images/homepage1.jpg') no-repeat center top scroll;
+
+	background-size: 100% auto;
+	
+}
+
+.search {
+	color: white;
+}
+
+.profile {
+	color: white;
+}
+
+.login {
+	color: white;
+}
+
+.signup {
+	color: #787A79	;
+}
+
+.button-login {
+	background: #787A79;
+	border: none;
+
+}

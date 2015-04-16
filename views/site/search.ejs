@@ -3,6 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Search</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
 
@@ -33,6 +39,7 @@
 			<div> <%= result.name %> </div>
 			<div> <%= result.location.address  %></div>
 			<div><p>Rating <%= result.rating  %></p></div>
+			<div><%= result.rating_img_url  %></div>
 			<div> <%=  result.food %> </div>
 			
 
