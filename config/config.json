@@ -11,7 +11,7 @@
   },
   "production": {
     "database": "picky_app",
-    "host": "127.0.0.1",
+    "host": "postgres://xisoncgfhxveyl:Ii_enA2LhhpLJLxNKCUxCDInk5@ec2-107-22-166-233.compute-1.amazonaws.com:5432/dcg3fear6del2b",
     "dialect": "postgres"
   }
 }
