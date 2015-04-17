@@ -3,71 +3,61 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
-<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-<link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+     
+    <!-- bepicky's additional stylesheet -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
 
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-static-top" id="navbar-signup">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/"><img src="images/smallerlogo.png"</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-          <ul class="nav navbar-nav">
-            
-            <li class="search"><a href="/search">Search for Food</a></li>
-            <li class="profile"><a href="/profile">Favorites</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            
-            
-            <li><a href="/signup"><img class="profile-avatar" src="https://www.gravatar.com/avatar/98e7a15de0ba9e88bab9e278bcb9ed27?d=mm&amp;r=g&amp;s=400">Hi, <%= ejsUser.email  %><span class="sr-only">(current)</span></a>
-             </li>
-           
-	       <li>  
-            <form method="POST" action="/logout?_method=DELETE"> 
-            	<input type="image" src="images/logout_03.png">
-            	<li>
-            	<a href="/login"></li></a>
-            	<!-- <button id="logout"><img src="images/logout_03.png"></button> -->
-             </li>
-            </form>
-           
-
-          </ul>
+	<!-- This is where the navigation starts -->
+	   <nav class="navbar navbar-default navbar-static-top" id="navbar-signup">
+         <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+            	  <span class="icon-bar"></span>
+            	  <span class="icon-bar"></span>
+            	  <span class="icon-bar"></span>
+          	</button>
+          		      <a class="navbar-brand" href="/"><img src="images/smallerlogo.png"</a>
+            </div>
+                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+          			<ul class="nav navbar-nav">
+            			<li class="search"><a href="/search">Search for Food</a></li>
+            			<li class="profile"><a href="/profile">Favorites</a></li>
+          			</ul>
+          	<ul class="nav navbar-nav navbar-right">
+               <li><a href="/signup"><img class="profile-avatar" src="https://www.gravatar.com/avatar/98e7a15de0ba9e88bab9e278bcb9ed27?d=mm&amp;r=g&amp;s=400">Hi, <%= ejsUser.email  %><span class="sr-only">(current)</span></a>
+             	</li>
+          		<li>  
+            	  <form method="POST" action="/logout?_method=DELETE"> 
+            		<input type="image" src="images/logout_03.png">
+            	 <li>
+            	  <a href="/login"></li></a>
+            	 </li>
+               </form>
+            </ul>
               
-             
-
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
   <div class='container'>
-		<h2>Hi, <%= ejsUser.email  %></h2>
-		 
-	</div>	   
-
-		<ul>
-			<% idk.forEach(function(fav){ %>
-				<li>
-					dish: <%= fav.dish %>
-					restaurant: <%= fav.restaurant  %>
+	<h2>Favorites</h2>
+  </div>	   
+    
+    <div class="container">
+       <% idk.forEach(function(fav){ %>
+         
+			<h2>dish: <%= fav.dish %>,  restaurant: <%= fav.restaurant  %></h2>
 			
-
-				</li>
+			
+			
 			<% }) %>
-		</ul>
+		
 
 
 

@@ -6,13 +6,13 @@
 	
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<!-- Latest compiled and minified CSS -->
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
- 
-
-<link rel="stylesheet" href="/stylesheets/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  
+  <!-- bepicky's additional stylesheet -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
+
+
 <body class="backgroundPic">
 
 <nav class="navbar navbar-default navbar-static-top" style="background-color:transparent;border:none;" id="navbar-group">
@@ -25,26 +25,24 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/"><img src="images/smallerlogo.png"</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-          <ul class="nav navbar-nav">
-            
-            <li><a href="/search">Search for Food</a></li>
-            <li><a href="/profile">Favorites</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-          <li>
-          <% if (user) { %>
-            
-            <form method="POST" action="/logout?_method=DELETE"> 
-            	<input type="image" src="images/logout_03.png"><li><a href="/login"></li></a>
-            	
-            </form>
-				</li>
-          	<% } else { %>
+       </div>
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+             <ul class="nav navbar-nav">
+                <li><a href="/search">Search for Food</a></li>
+                <li><a href="/profile">Favorites</a></li>
+             </ul>
 
-            <li><a href="/login">Login</a></li>
-            
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+
+               <!-- If the user is logged in, it will only show a logout icon on the top right corner, else a login/signup links -->
+               <% if (user) { %>
+                  <form method="POST" action="/logout?_method=DELETE"> 
+            	     <input type="image" src="images/logout_03.png"><li><a href="/login"></li></a>
+            	  </form>
+			</li>
+          	<% } else { %>
+			<li><a href="/login">Login</a></li>
             <li><a href="/signup">Sign up Free<span class="sr-only">(current)</span></a></li>
             <% } %>
           </ul>
@@ -57,32 +55,29 @@
    			<h1 class="index"> Pick Food Easier.</h1>
    			  <p class="index-find"> Find a nearby place for your desired dish</p>
    			     <p class="index-search"> Search. Save. Visit!</p>
-   			        <p>
-          <a class="btn btn-lg btn-primary" href="/search" role="button">Search bepicky.</a>
-        </p>
+   			        <p> <a class="btn btn-lg btn-primary" href="/search" role="button">Search bepicky.</a></p>
 
         </div>
-     </div>
+   </div>
 
 
    <div class="container">
    		<div class="index-stats">
    			<img src="images/stats.png">
-   			</div>
+   	 	</div>
 
-   			</div>
+     </div>
 
    
    		<div class="container">
    		   <div class="index-footer">
 			  <p> bepicky 2015</p>
 
-
-				</div>
-   			</div>			
+			</div>
+   	    </div>			
 
 
 	
 
-</body>
+  </body>
 </html>

@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Picky Homepage</title>
+	<title>Sign Up</title>
 	
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<!-- Latest compiled and minified CSS -->
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
  
-
-<link rel="stylesheet" href="/stylesheets/style.css">
+	<!-- bepicky's additional stylesheet -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-	
+	<!-- This is where the navigation starts -->
 	<nav class="navbar navbar-default navbar-static-top" id="navbar-signup">
       <div class="container">
         <div class="navbar-header">
@@ -24,39 +24,40 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><img src="images/smallerlogo.png"</a>
-        </div>
+         <a class="navbar-brand" href="/"><img src="images/smallerlogo.png"</a>
+       </div>
+		
+		
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
           <ul class="nav navbar-nav">
-            
             <li class="search"><a href="/search">Search for Food</a></li>
             <li class="profile"><a href="/profile">Favorites</a></li>
           </ul>
+          <!-- Nav bar on the right side -->
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/login">Login</a></li>
-            
             <li ><a href="/signup">Sign up Free<span class="sr-only">(current)</span></a></li>
           </ul>
-
-
-
-        </div><!--/.nav-collapse -->
+		</div><!--/.nav-collapse -->
       </div>
     </nav>
 
-
 	<div class="container">
-		<div class="sign-up">
-	     <h1 class="joinpicky">Join bepicky.</h1>
+		<div class="login-signup">
+	     <h1 class="loginpicky">Join bepicky.</h1>
 	      <form action='/signup' method='POST'>
-			<input type="text" name="email" placeholder="email">
-			<input type="password" name="password" placeholder="password">
+			<input class="email" type="text" name="email" placeholder="email"><br>
+			<input class="password"type="password" name="password" placeholder="password"><br>
+				<button class="button">Sign up!</button>
+	       </form>
+	    </div>
+    </div>
+
+    <div class="container">
+		<p class="ifmember"><a href="/login">Already a member?</a>
+    </div>
 
 
 
-	<button>Sign up!</button>
-	</form>
-	</div>
-</div>
 </body>
 </html>

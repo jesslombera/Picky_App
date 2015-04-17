@@ -6,11 +6,14 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- bepicky's additional stylesheet -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
+
 <body>
+
 
 <nav class="navbar navbar-default navbar-static-top" id="navbar-signup">
       <div class="container">
@@ -23,13 +26,16 @@
           </button>
           <a class="navbar-brand" href="/"><img src="images/smallerlogo.png"</a>
         </div>
+
+        <!-- Nav bar on the right side -->
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
           <ul class="nav navbar-nav">
-            
             <li class="search"><a href="/search">Search for Food</a></li>
             <li class="profile"><a href="/profile">Favorites</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+
+
 
             <li><a href="/login">Login</a></li>
             
@@ -42,30 +48,33 @@
       </div>
     </nav>
 
-
+ <div class='container'>
+	<h2 class="search-header">Search for Dish and Location</h2>
+  </div>
 	<div class="container">
         <div class="row">
             <div class="col-xs-6 col-xs-offset-3">
                 <form class="myForm" method="GET" action="/search">
                     <input type="text" name="food" placeholder="dish: tacos">
                     <input type="text" name="city" placeholder="city: San Francisco">
-
-                    <button>Search</button>
+						<button>Search</button>
                 </form>
-
-				
-
-            </div>
+			</div>
         </div>
 
-<% if(food) { %>
+    
 
-	<h2> <%= food  %></h2>
-	<h1>List of Restaurants </h1>
+    <!-- Start search of dish with yelp's API -->
 
-<% } %>
+     <% if(food) { %>
+
+	   <h2> <%= food  %></h2>
+	      <h1>List of Restaurants </h1>
+
+     <% } %>
 
 	<% results.forEach(function(result) { %>
+			
 			
 			<div> <%= result.name %> </div>
 			<div> <%= result.location.address  %></div>
@@ -81,17 +90,13 @@
 
 		  		<input type="text" style="display: none;"
 		  		   value="<%= food %>" name="dish">
-		  		 
-				
-		  		   <button>Add to Favorites</button>
-		  	</form>	   
+		  		       <button>Add to Favorites</button>
+		  </form>	   
 
-			
-			  
-	<%	})  %>
+<%	})  %>
 
 
 	
 
-</body>
+    </body>
 </html>

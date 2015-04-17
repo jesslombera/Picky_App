@@ -33,8 +33,19 @@ body {
 	text-align: center;
 }
 
+h2.search-header {
+	text-align: center;
+}
 
+.email {
+	width: 350px;
+	height: 40px;
+}
 
+.password {
+	width: 350px;
+	height: 40px;
+}
 h1.index {
 	font-size: 63px;
 }
@@ -55,15 +66,16 @@ p.index-find {
 	padding-bottom: 15px;
 	font-weight: none;
 }
+
 p.index-search{
 	font-size: 25px;
 	padding-bottom: 25px;
 	font-weight: none;
 }
+
 .btn-primary {
 	background-color: #337ab7;
 	border: none;
-
 }
 
 .index-stats {
@@ -85,7 +97,7 @@ p.index-search{
   border-radius: 10px;
   margin-right: 16px;
 }
-.login {
+.login-signup {
 	text-align: center;
 }
 
@@ -93,4 +105,16 @@ h1.loginpicky {
 	font-size: 50px;
 }
 
+p.ifmember {
+	font-size: 20px;
+	padding-top: 20px;
+	text-align: center
+}
 
+.button {
+	width: 350px;
+	background-color: #F9690E;
+	color: white;
+	border: none;
+	height: 40px;
+}

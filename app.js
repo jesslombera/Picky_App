@@ -153,7 +153,7 @@ app.get('/search', function(req, res) {
 
 });
 
-// 
+// this route directs the user to profile once logged in
 app.post('/favorites', function(req,res){
 	var dish = req.body.dish;
 	var restaurant = req.body.restaurant;
