@@ -55,11 +55,11 @@ app.use(express.static('public'));
 
 
 
-
 // Let's add some routes here together:
 // render to the index.ejs file
 app.get('/', function(req, res) {
-   res.render('index.ejs'); // We use res.render to display an EJS file instead of res.send() 
+   	var user = req.session.userId;
+   	res.render('index.ejs', {user:user}); // We use res.render to display an EJS file instead of res.send() 
 });
 
 // Here we add User routes together
@@ -70,6 +70,7 @@ app.get('/login', function(req, res){
 			res.redirect('users/profile');
 		} else {
 			res.render("users/login");
+
 		}
 	});
 });
@@ -111,15 +112,19 @@ app.delete('/logout', function(req, res){
 app.get('/profile', function(req, res){
 	req.currentUser().then(function(user){
 		if (user) {
-			db.Favorite.findAll({where: {UserId: user.id}})
+			db.Favorite.all({where: {UserId: user.id}})
 			  .then(function(restaurants){
 			  	console.log("\n\n\n\n\nHELLO", restaurants);
 				res.render('users/profile', {ejsUser: user, idk: restaurants});
 			});
 		} else {
-			res.redirect('users/login');
+			res.redirect('/login');
 		}
 	});
+});
+
+app.get('/users/profile', function(res, res){
+	res.render('users/profile');
 });
 
 

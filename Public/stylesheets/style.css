@@ -1,29 +1,88 @@
 body {
 	font-family: 'Raleway', sans-serif;
-	background: url('/images/homepage1.jpg') no-repeat center top scroll;
-
-	background-size: 100% auto;
 	
 }
 
-.search {
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+#navbar-group a {
+	color:white;
+	padding-top: 30px;
+}
+
+#navbar-signup {
+	min-height: 60px;
+}
+
+.backgroundPic {
+	background: url('/images/homepage1.jpg') no-repeat center top scroll;
+	background-size: 100% auto;
+	background-color: #F9690E;
+	
+}
+
+.index-picky {
 	color: white;
+	text-align: center;
 }
 
-.profile {
-	color: white;
+
+
+h1.index {
+	font-size: 63px;
 }
 
-.login {
-	color: white;
+h1 {
+  display: block;
+  font-size: 2em;
+  -webkit-margin-before: 0.67em;
+  -webkit-margin-after: 0.67em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: none;
 }
 
-.signup {
-	color: #787A79	;
-}
 
-.button-login {
-	background: #787A79;
+p.index-find {
+	font-size: 25px;
+	padding-bottom: 15px;
+	font-weight: none;
+}
+p.index-search{
+	font-size: 25px;
+	padding-bottom: 25px;
+	font-weight: none;
+}
+.btn-primary {
+	background-color: #337ab7;
 	border: none;
 
 }
+
+.index-stats {
+	padding-top: 50px;
+	text-align: center;
+
+}
+
+.index-footer {
+	color: white;
+	text-align: center;
+	font-weight: lighter;
+	font-size: 10px;
+}
+
+.profile-avatar {
+   width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  margin-right: 16px;
+}
+
