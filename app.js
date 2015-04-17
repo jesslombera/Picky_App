@@ -5,12 +5,22 @@ var app = express();
 var request = require('request');
 var session = require('express-session');
 var methodOverride = require('method-override');
+
+//  required for yelp request
 var yelp = require("yelp").createClient({
-  consumer_key: "vUopKfkIHsDT3_giwNy6jw", 
-  consumer_secret: "bw_0vZOV2VtamL2QWRQKwy4Z6Qc",
-  token: "m7p0SAIwPHcArRGadTPQHZH9JmiHq12_",
-  token_secret: "qPhC-ttqoQi4sFpR9M9wSD5JD6w"
+  consumer_key: process.env.YELP_CONSUMER_KEY, 
+  consumer_secret: process.env.YELP_CONSUMER_SECRET,
+  token: process.env.YELP_TOKEN,
+  token_secret: process.env.YELP_TOKEN_SECRET
 });
+
+//this condfirms that the yelp keys are being loaded
+//console.log("Yelp Keys");
+console.log(process.env.YELP_CONSUMER_KEY);
+console.log(process.env.YELP_CONSUMER_SECRET);
+console.log(process.env.YELP_TOKEN);
+console.log(process.env.YELP_TOKEN_SECRET);
+
 
 
 
