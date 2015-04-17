@@ -14,7 +14,7 @@ var yelp = require("yelp").createClient({
   token_secret: process.env.YELP_TOKEN_SECRET
 });
 
-
+console.log(process.env.DATABASE_URL);
 
 
 
