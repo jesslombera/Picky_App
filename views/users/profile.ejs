@@ -34,12 +34,16 @@
             
             <li><a href="/signup"><img class="profile-avatar" src="https://www.gravatar.com/avatar/98e7a15de0ba9e88bab9e278bcb9ed27?d=mm&amp;r=g&amp;s=400">Hi, <%= ejsUser.email  %><span class="sr-only">(current)</span></a>
              </li>
-
-         
+           
+	       <li>  
             <form method="POST" action="/logout?_method=DELETE"> 
-            	<input type="image" src="images/logout_03.png"><li><a href="/login"></li></a>
+            	<input type="image" src="images/logout_03.png">
+            	<li>
+            	<a href="/login"></li></a>
             	<!-- <button id="logout"><img src="images/logout_03.png"></button> -->
+             </li>
             </form>
+           
 
           </ul>
               

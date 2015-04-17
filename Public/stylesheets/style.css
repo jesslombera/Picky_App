@@ -80,9 +80,17 @@ p.index-search{
 }
 
 .profile-avatar {
-   width: 20px;
+	  width: 20px;
   height: 20px;
   border-radius: 10px;
   margin-right: 16px;
 }
+.login {
+	text-align: center;
+}
+
+h1.loginpicky {
+	font-size: 50px;
+}
+
 

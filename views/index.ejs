@@ -33,9 +33,14 @@
             <li><a href="/profile">Favorites</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+          <li>
           <% if (user) { %>
-           <p>whatever you want when user is signed in</p>
-
+            
+            <form method="POST" action="/logout?_method=DELETE"> 
+            	<input type="image" src="images/logout_03.png"><li><a href="/login"></li></a>
+            	
+            </form>
+				</li>
           	<% } else { %>
 
             <li><a href="/login">Login</a></li>
