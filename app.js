@@ -14,11 +14,6 @@ var yelp = require("yelp").createClient({
   token_secret: process.env.YELP_TOKEN_SECRET
 });
 
-console.log("DATABASE_URL is => " + process.env.DATABASE_URL);
-console.log("NODE_ENV is => " + process.env.NODE_ENV);
-
-
-
 
 app.set('view engine', 'ejs');
 
@@ -59,11 +54,12 @@ app.use(express.static('public'));
 
 
 
-// Let's add some routes here together:
+// Let's add some routes
+
 // render to the index.ejs file
 app.get('/', function(req, res) {
    	var user = req.session.userId;
-   	res.render('index.ejs', {user:user}); // We use res.render to display an EJS file instead of res.send() 
+   	  res.render('index.ejs', {user:user}); // We use res.render to display an EJS file instead of res.send() 
 });
 
 // Here we add User routes together
@@ -85,10 +81,11 @@ app.get('/signup', function(req, res) {
 	res.render('users/signup');
 });
 
+// post to login 
 app.post('/login', function(req,res) {
 	var email = req.body.email;
 	var password = req.body.password;
-	db.User.find({ where: { email: email}})
+	  db.User.find({ where: { email: email}})
 	  .then(function(user) {
 	  	req.login(user);
 	  	  res.redirect('/profile');
@@ -99,29 +96,30 @@ app.post('/login', function(req,res) {
 app.post('/signup', function(req, res) {
 	var email = req.body.email;
 	var password =  req.body.password;
-	db.User.createSecure(email,password)
+	  db.User.createSecure(email,password)
 		.then(function(user) {
 			req.login(user);
 			res.redirect('/profile');
 		});
 });
 
-// Here is a route to logout the user
+// Here is a route to logout the user, it requires the _methodoverride and logout call
 app.delete('/logout', function(req, res){
 	req.logout();
 	res.redirect('/login');
 });
 
 
+// route to user profile
 app.get('/profile', function(req, res){
 	req.currentUser().then(function(user){
 		if (user) {
 			db.Favorite.all({where: {UserId: user.id}})
 			  .then(function(restaurants){
 			  	console.log("\n\n\n\n\nHELLO", restaurants);
-				res.render('users/profile', {ejsUser: user, idk: restaurants});
+				  res.render('users/profile', {ejsUser: user, idk: restaurants});
 			});
-		} else {
+		  } else {
 			res.redirect('/login');
 		}
 	});
@@ -134,20 +132,20 @@ app.get('/users/profile', function(res, res){
 
 
 
-//Routes for search page including API
+//Routes for search page including Yelp API
 app.get('/search', function(req, res) {
 	console.log(req.query);
 	var food = req.query.food;
 	var city = req.query.city;
 	if (!food || !city) {
 		res.render('site/search', {results: [], food: false});
-		console.log("This is the food " + food);
+		  console.log("This is the food " + food);
 	} else {
 
 		yelp.search({term: food, location: city}, function(error, data) {
 	  		console.log("This is an error " + error);
 	  		console.log("This is our data " + data);
-	  	  res.render('site/search', {results: data.businesses, food: food});
+	  	      res.render('site/search', {results: data.businesses, food: food});
 	    });
 	} 
 	return(food);  
@@ -155,15 +153,16 @@ app.get('/search', function(req, res) {
 
 });
 
+// 
 app.post('/favorites', function(req,res){
 	var dish = req.body.dish;
 	var restaurant = req.body.restaurant;
 	
-	req.currentUser().then(function(dbUser){
-		if (dbUser) {
+	    req.currentUser().then(function(dbUser){
+		  if (dbUser) {
 			db.Favorite.create({dish: dish, restaurant: restaurant, UserId: req.session.userId})
-        .then(function(){
-            res.redirect("/profile");
+              .then(function(){
+                  res.redirect("/profile");
         })
 			dbUser.addToFavs(dish,restaurant).then(function(resTaus){
 				res.redirect('/profile');
@@ -174,23 +173,10 @@ app.post('/favorites', function(req,res){
 	});
 });
 
-// 	req.currentUser().then(function(User){
-// 		if (User) {
-// 			User.add(db,location).then(function(dish){
-// 				res.redirect('/profile');
-// 			});
-// 		} else {
-// 			res.redirect('/login');
-// 		}
-// 	});
-// });
-
-
-
 
 	// Start the server on port 3000
   db.sequelize.sync().then(function(){
-  	var server = app.listen(3000, function() {
+  	var server = app.listen(process.env.PORT || 3000, function() {
   		console.log("I am listening");
   	});
   });
