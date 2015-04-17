@@ -14,13 +14,6 @@ var yelp = require("yelp").createClient({
   token_secret: process.env.YELP_TOKEN_SECRET
 });
 
-//this condfirms that the yelp keys are being loaded
-//console.log("Yelp Keys");
-console.log(process.env.YELP_CONSUMER_KEY);
-console.log(process.env.YELP_CONSUMER_SECRET);
-console.log(process.env.YELP_TOKEN);
-console.log(process.env.YELP_TOKEN_SECRET);
-
 
 
 
