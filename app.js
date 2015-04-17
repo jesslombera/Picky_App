@@ -176,7 +176,7 @@ app.post('/favorites', function(req,res){
 
 	// Start the server on port 3000
   db.sequelize.sync().then(function(){
-  	var server = app.listen(process.env.PORT || 3000,);
+  	var server = app.listen(process.env.PORT || 3000);
   	});
   });
 
